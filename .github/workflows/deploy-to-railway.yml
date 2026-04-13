@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./enterprise-web  # 你的项目文件夹
+        working-directory: ./xxx-web
 
     steps:
       - uses: actions/checkout@v4
@@ -29,7 +29,8 @@ jobs:
       - name: Install Railway CLI
         run: npm install -g @railway/cli
 
+      # 🔥 核心修复：先进入xxx-web文件夹，再执行部署
       - name: Deploy to Railway
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-        run: railway up --service ${{ secrets.RAILWAY_SERVICE_ID }} --detach
+        run: cd ./xxx-web && railway up --service ${{ secrets.RAILWAY_SERVICE_ID }} --detach

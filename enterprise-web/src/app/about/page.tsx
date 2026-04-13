@@ -99,7 +99,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="text-4xl lg:text-5xl font-bold text-white mb-2">12+</div>
-              <div className="text-blue-200">世界首创发明</div>
+              <div className="text-blue-200">世界首创发明1</div>
             </div>
             <div className="text-center">
               <div className="text-4xl lg:text-5xl font-bold text-white mb-2">50+</div>

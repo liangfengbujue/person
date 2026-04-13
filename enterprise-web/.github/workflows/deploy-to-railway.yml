@@ -1,0 +1,30 @@
+name: Deploy to Railway
+
+on:
+  push:
+    branches: [ main ]  # 推送到 main 时触发
+  workflow_dispatch:    # 允许手动触发
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    container: ghcr.io/railwayapp/cli:latest  # 官方 CLI 镜像
+    environment:
+      name: production  # 可选：GitHub 环境保护
+    env:
+      RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 如果你需要构建（如 Next.js）
+      - name: Install dependencies & build
+        run: |
+          npm install
+          npm run build
+
+      # 部署到 Railway
+      - name: Deploy to Railway
+        run: |
+          railway up --service ${{ secrets.RAILWAY_SERVICE_ID }} --detach

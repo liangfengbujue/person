@@ -33,4 +33,4 @@ jobs:
       - name: Deploy to Railway
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-        run: cd ./xxx-web && railway up --service ${{ secrets.RAILWAY_SERVICE_ID }} --detach
+        run: cd ./enterprise-web && railway up --service ${{ secrets.RAILWAY_SERVICE_ID }} --detach
